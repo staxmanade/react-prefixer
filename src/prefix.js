@@ -4,10 +4,20 @@ var styles = window.getComputedStyle(document.documentElement, ""),
         .slice
         .call(styles)
         .join("")
-        .match(/-(moz|webkit|ms)-/)[1] || (styles.OLink === "" && ["", "o"]),
+        .match(/-(moz|webkit|ms)-/)[1] || (styles.OLink === "" && ["", "o"]);
+
+    var isIE10 = (function(){
+      try {
+        return navigator && navigator.appVersion && navigator.appVersion.indexOf("MSIE 10") >= 0;
+      } catch (e) {
+        return false;
+      }
+    })();
+
     ret = {
         css:"-" + prefix + "-",
-        js:prefix
+        js:prefix,
+        isIE10:isIE10
     };
 
 if (ret.js !== "ms") {
