@@ -6,19 +6,19 @@ var styles = window.getComputedStyle(document.documentElement, ""),
         .join("")
         .match(/-(moz|webkit|ms)-/)[1] || (styles.OLink === "" && ["", "o"]);
 
-    var isIE10 = (function(){
-      try {
+var isIE10 = (function(){
+    try {
         return navigator && navigator.appVersion && navigator.appVersion.indexOf("MSIE 10") >= 0;
-      } catch (e) {
+    } catch (e) {
         return false;
-      }
-    })();
+    }
+})();
 
-    ret = {
-        css:"-" + prefix + "-",
-        js:prefix,
-        isIE10:isIE10
-    };
+var ret = {
+    css:"-" + prefix + "-",
+    js:prefix,
+    isIE10:isIE10
+};
 
 if (ret.js !== "ms") {
     ret.js = ret.js.charAt(0).toUpperCase() + ret.js.slice(1);
